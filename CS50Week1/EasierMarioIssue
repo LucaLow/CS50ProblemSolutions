@@ -1,6 +1,5 @@
 // Library Declaration
 #include <stdio.h>
-#include <cs50.h>
 //Variable Declaration and Definition
 int Height = 16;
 char StartC = ' ';
