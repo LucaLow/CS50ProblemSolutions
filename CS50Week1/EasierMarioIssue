@@ -1,15 +1,21 @@
+// Library Declaration
 #include <stdio.h>
 #include <cs50.h>
+//Variable Declaration and Definition
 int Height = 16;
 char StartC = ' ';
 char EndC = '#';
+// Program Entry Point
 int main(void){
-    Height = get_int("Enter Height: ");
+    // This will declare the variable x starting with the value of Height and decrementing in the for loop
     for(int x = Height; x>=0; x--){
+        //This will print x number of spaces, x will decrease over time and so the number of spaces will too
         for(int i = 0; i < x; i++)
             printf("%c", StartC);
+        // This will print Height - x number of HashTags the number of hashtags will increase over time as the value of x decrements
         for(int i = Height; i >= x; i--)
             printf("%c", EndC);
+        // This will create a new line in the console
         printf("\n");
     }
 }
