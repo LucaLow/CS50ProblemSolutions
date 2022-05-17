@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <cs50.h>
 // Variable Declarations
-int Height = 32;
+int Height;
 const char StartC = ' ';
 const char EndC = '#';
 // Function Declarations, this is required in C to show the functions which are going to be used, the CLANG compiler requires this
@@ -14,7 +14,7 @@ int main(void)
     {
         Height = get_int("Line height? ");
     }
-    while (Height <= 0 || Height >= 9);
+    while (Height <= 0 /*|| Height >= 9*/);
     // This for loop is used to make the width of this program smaller
     for (int x = Height; x > 0; x--)
     {
@@ -22,11 +22,6 @@ int main(void)
         PrintThing(x, StartC, EndC, Height);
         printf("\n");
     }
-    //for (int x = 0; x < Height; x++)
-    //{
-    //    PrintThing(x, StartC, EndC, Height);
-    //    printf("\n");
-    //}
 }
 
 // Function Definitions
