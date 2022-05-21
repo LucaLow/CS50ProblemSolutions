@@ -1,0 +1,35 @@
+In the end I differed from this quite alot, I also went into too much detail.
+I can only recomend this aproach for people who find structure in this way helpfull, I am not one of these people.
+In general sudo code should have 1/10th the number of lines of text compared to the written program, do not replicate this there was way to much detail.
+
+# for this program I'll attempt to use as little libraries as possible, creating my own functions as an abstraction instead.
+# Though I'll use cs50.h and stdio.h as I require strings, having not yet learnt how to do this myself.
+
+### Program Entry Point, Command line args ###
+
+# The program should check  the cla input, if invalid the program should remind the user of how to run the program in, example: Usage: ./caesar key
+# Run a function that checks the above and then returns the desired result, if invalid print as defined above and then return a non zero number.
+
+# Run a function that returns cipher text from the above input, the above input should be a int and a string to be converted. Line 15
+
+### Program Entry End ###
+
+
+
+### CipherFunction Begin, int, string ###
+
+# Break the string into a array of ints, map each letter int to 0 - 25
+# Break the string into a array of bools, this will be true if capital and false if lowerCase
+
+# add the provided int to each number in the int array,
+
+# if any value in the int array is negative add 26 to each element ## possible extension to this is to add 26 to each negative int until positive, current method will not work properly if a number lower than -26 is provided.
+# modulus each element in the int array by 26
+
+# add 141 to each element in the int array
+# for each true in the bool array subtract 40 from the corrosponing int
+
+# create new string and assign each character the corrosponding ASKI int from the int array
+# return string above
+
+### CipherFunction End ###
