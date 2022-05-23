@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int SortedArray[] = {1, 2, 7, 50, 34, 69, 900}; // This array must be sorted
+int NumberToBeFound = 34; // The function will return the index of where this number is
+
+int main(void)
+{
+    for (int x = 0, length = sizeof(SortedArray)/sizeof(SortedArray[0]); x < length; x++)
+    {
+        if(SortedArray[x] == NumberToBeFound)
+        {
+            printf("Item is at index %i.\n", x);
+            return 0;
+        }
+    }
+    printf("Item was not found.\n");
+    return 1;
+}
