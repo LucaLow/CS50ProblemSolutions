@@ -151,9 +151,9 @@ void tabulate(void)
     for (int x = 0, Vlength = voter_count; x < Vlength; x++)
     {
         for (int j = 0, Clength = candidate_count; j < Clength; j++)
-        {
+        { // loop through each candidates preferences, this should be stopped by the break once the loop finds a contestent that has not been eliminated
             if(candidates[preferences[x][j]].eliminated == false)
-            {
+            { // once a contestant who has not been eliminated is found count the vote and break
                 candidates[preferences[x][j]].votes = candidates[preferences[x][j]].votes + 1;
                 break;
             }
@@ -165,12 +165,12 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    int requiredVotes = round(voter_count / 2);
+    int requiredVotes = round(voter_count / 2); // this is the required amount of votes - 1 required to win
     for(int x = 0, length = candidate_count; x < length; x++)
     {
-        if(candidates[x].votes > requiredVotes)
+        if(candidates[x].votes > requiredVotes) // if the majority of votes are given to this candidate, print their name and return
         {
-            printf("%s\n", candidates[x].name);
+            printf("%s\n", candidates[x].name); // print winner name
             return true;
         }
     }
@@ -182,12 +182,12 @@ int find_min(void)
 {
     int LowestScore;
     for (int x = 0, length = candidate_count; x < length; x++)
-    {
+    { // loops through each candidate and finds the lowest score, then returns that score
         if (x == 0)
         {
             LowestScore = x;
         }
-        else if (candidates[x].votes < candidates[LowestScore].votes && candidates[x].eliminated == false)
+        else if (candidates[x].votes < candidates[LowestScore].votes && candidates[x].eliminated == false) // if is less than lowest score and is not eliminated
         {
             LowestScore = x;
         }
@@ -201,7 +201,7 @@ bool is_tie(int min)
     for (int x = 0, length = candidate_count; x < length; x++)
     {
         if(candidates[x].votes != min && candidates[x].eliminated == false)
-        {
+        { // if this candidate is different then the lowest score and is not eliminated then return
             return false;
         }
     }
@@ -212,7 +212,7 @@ bool is_tie(int min)
 void eliminate(int min)
 {
     for(int x = 0, length = candidate_count; x < length; x++)
-    {
+    { // Loop through each contestant and if they have the lowest amount of votes, eliminate them
         if(candidates[x].votes == min)
         {
             candidates[x].eliminated = true;
