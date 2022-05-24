@@ -27,15 +27,18 @@ int main(void)
         I am starting to see how this can be used to create data types where the number of elements is changing, such as a linked list.
     */
     // The next lines will be used to see how this idea interacts with other data types.
-    string l = "Yo my name is Luca!";
+    string l = "Yo, my name is Luca!";
     string *z = &l; // I'm starting to run out of letters
     string f = "Hi";
     f = *z; // I have a suspicion this will not return what is expected
-    printf("string = %s, \npointer to string = %p, \nstring to pointer to string = %s\n", l, p, f);
+    printf("String = %s, \nString to pointer = %p, \nString to pointer to string = %s\n", l, p, f);
     /*
         This was a nice suprise!
         I suspected that setting the value of a string in this manner would cause some sort of overflow as the string took up more characters
-        than where intially allocated to it, causing a stack over flow (ha ha)
+        than where intially allocated to it, causing a stack over flow (ha ha) turns out this returns:
+            String = Yo, my name is Luca!,
+            String to pointer = 0x7fff9e67dbfc,
+            String to pointer to string = Yo, my name is Luca!
 
         having seen this I suspect a string is an array of pointers, not actual characters pointing and setting the value of f only changed the pointers
         being referenced.
