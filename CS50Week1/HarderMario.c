@@ -14,7 +14,7 @@ int main(void)
     {
         Height = get_int("Line height? ");
     }
-    while (Height <= 0 /*|| Height >= 9*/);
+    while (Height <= 0 || Height >= 9);
     // This for loop is used to make the width of this program smaller
     for (int x = Height; x > 0; x--)
     {
