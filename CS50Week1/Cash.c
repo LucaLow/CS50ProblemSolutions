@@ -1,68 +1,46 @@
-#include <cs50.h>
+//Library Declarations
 #include <stdio.h>
-
-int get_cents(void);
-int calculate_quarters(int cents);
-int calculate_dimes(int cents);
-int calculate_nickels(int cents);
-int calculate_pennies(int cents);
+#include <cs50.h>
+// Variable Declarations
+int Height;
+const char StartC = ' ';
+const char EndC = '#';
+// Function Declarations, this is required in C to show the functions which are going to be used, the CLANG compiler requires this
+void PrintThing(int x, char _StartC, char _EndC, int _Height);
 
 int main(void)
 {
-    // Ask how many cents the customer is owed
-    int cents = get_cents();
-    // Calculate the number of quarters to give the customer
-    int quarters = calculate_quarters(cents);
-    cents = cents - quarters * 25;
-    // Calculate the number of dimes to give the customer
-    int dimes = calculate_dimes(cents);
-    cents = cents - dimes * 10;
-
-    // Calculate the number of nickels to give the customer
-    int nickels = calculate_nickels(cents);
-    cents = cents - nickels * 5;
-
-    // Calculate the number of pennies to give the customer
-    int pennies = calculate_pennies(cents);
-    cents = cents - pennies * 1;
-
-    // Sum coins
-    int coins = quarters + dimes + nickels + pennies;
-
-    // Print total number of coins to give the customer
-    printf("%i\n", coins);
-}
-
-int get_cents(void)
-{
-    int x;
-
     do
     {
-        x = get_int("How many cents are you owed? ");
+        Height = get_int("Line height? ");
     }
-    while (x <= 0);
-    return x;
+    while (Height <= 0 || Height >= 9);
+    // This for loop is used to make the width of this program smaller
+    for (int x = Height; x > 0; x--)
+    {
+        //This Function is used to print the apropriate number of hashes, a function is used here as dirrectly writing out what this program does here would make the program very obese
+        PrintThing(x, StartC, EndC, Height);
+        printf("\n");
+    }
 }
 
-int calculate_quarters(int cents)
+// Function Definitions
+void PrintThing(int x, char _StartC, char _EndC, int _Height)
 {
-    return cents / (int)25;
-}
-
-int calculate_dimes(int cents)
-{
-    return cents / (int)10;
-}
-
-int calculate_nickels(int cents)
-{
-    // TODO
-    return cents / (int)5;
-}
-
-int calculate_pennies(int cents)
-{
-    // TODO
-    return cents;
+    // This program largely follows what is shown in Problem 1 the changes will be outlined
+    for (int i = 1; i < x; i++)
+    {
+        printf("%c", _StartC);
+    }
+    for (int i = _Height; i >= x; i--)
+    {
+        printf("%c", _EndC);
+    }
+    // This line is used to show the space in between the lines in the hashes.
+    printf("  ");
+    // This program has been changed to print the hashes first, I do not require the spaces as they would fill empty space that is not read either.
+    for (int i = _Height; i >= x; i--)
+    {
+        printf("%c", _EndC);
+    }
 }
